@@ -1,4 +1,4 @@
-# SIT210 - Project - SmartRoom - Prototype
+# SIT210 - Project - Smart Room - Prototype
 ## Student
 * Devin Jayasinghe
 
