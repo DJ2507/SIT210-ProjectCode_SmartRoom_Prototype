@@ -35,7 +35,8 @@ def smartroom_code(settemperature, sethumidity):
     if timer >= 60: # If Timer is >= 60 Set Timer To 60 (Conserves Memory)
         timer = 60
 
-    humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN) # Read Humidity & Temperature From Sensor & Set To Variables
+    # Read Humidity & Temperature From Sensor & Set To Variables
+    humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
     
     # If Timer < 60 (Motion Detected Within 5mins)
     if timer < 60:
@@ -52,8 +53,9 @@ def smartroom_code(settemperature, sethumidity):
         GPIO.output(humled, False) # Turn Humidifier Off
         GPIO.output(templed, False) # Turn Heater Off
         GPIO.output(lightled, False) # Turn Light Off
-        r = requests.post('https://maker.ifttt.com/trigger/all_off/with/key/nZhqWJolBYnxYQztknC5P') # Post Event Trigger (Causes IFTTT Webhook To Send Email + Mobile Notification 
-                                                                                                    # Saying Devices Have Been Switched Off)
+        
+        # Post Event Trigger (Causes IFTTT Webhook To Send Email + Mobile Notification Saying Devices Have Been Switched Off)
+        r = requests.post('https://maker.ifttt.com/trigger/all_off/with/key/nZhqWJolBYnxYQztknC5P')
     time.sleep(5) # Wait 5 Seconds
 
 # Function To Run Main Program
